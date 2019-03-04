@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.microservices</groupId>
-	<artifactId>user_rating_service</artifactId>
+	<artifactId>user_library</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>user_rating_service</name>
+	<name>user_library</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
