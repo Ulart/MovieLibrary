@@ -1,10 +1,12 @@
 package com.microservices.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,48 +15,53 @@ import javax.persistence.Table;
 public class UserProfile {
 
 	@Id
-	@GeneratedValue
-	private int id;
-	private String name;
-	private String vorname;
-	@Column(name="Brith")
-	private Date dateOfBirth;
+	private String userName;
+	
+	private String password;
+	@Column(name="registration")
+	private Date dateOfRegistration;
+	@ElementCollection(targetClass=Rating.class)
+	private List<Rating> ratings;
 	
 	
-	public int getId() {
-		return id;
+	public Date getDateOfRegistration() {
+		return dateOfRegistration;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setDateOfRegistration(Date dateOfRegistration) {
+		this.dateOfRegistration = dateOfRegistration;
 	}
-	public String getName() {
-		return name;
+	public List<Rating> getRatings() {
+		return ratings;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setRatings(List<Rating> ratings) {
+		this.ratings = ratings;
 	}
-	public String getVorname() {
-		return vorname;
+	public String getUserName() {
+		return userName;
 	}
-	public void setVorname(String vorname) {
-		this.vorname = vorname;
+	public void setUserName(String UserName) {
+		this.userName = UserName;
 	}
-	public Date getDateOfBirth() {
-		return dateOfBirth;
+	public String getPassword() {
+		return password;
 	}
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	
-	public UserProfile(String name, String vorname, Date dateOfBirth) {
+	
+	public UserProfile(String userName, String password) {
 		super();
-		this.name = name;
-		this.vorname = vorname;
-		this.dateOfBirth = dateOfBirth;
+		this.userName = userName;
+		this.password = password;
+		this.ratings = new ArrayList<Rating>();
+		this.dateOfRegistration = new Date();
 	}
 	
 	public UserProfile() {
 		super();
+		this.ratings = new ArrayList<Rating>();
+		this.dateOfRegistration = new Date();
 	}
 }

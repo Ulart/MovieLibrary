@@ -1,6 +1,7 @@
 package com.microservices.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.microservices.model.Rating;
 import com.microservices.model.UserProfile;
 import com.microservices.service.UserService;
 
@@ -28,10 +30,11 @@ public class UserController {
 		return userService.getAllUsers();
 	}
 	
-	@GetMapping("/{userId}")
-	public UserProfile getUserById(@PathVariable int userId) {
-		return userService.getUserById(userId);
+	@GetMapping("/{userName}")
+	public UserProfile getUserById(@PathVariable String userName) {
+		return userService.getUserById(userName);
 	}
+	
 	@PostMapping()
 	public void addUser(@RequestBody UserProfile newUser) {
 		userService.addUser(newUser);
@@ -44,9 +47,21 @@ public class UserController {
 		return;
 	}
 	
-	@DeleteMapping("/{userId}")
-	public void deleteUserById(@PathVariable int userId) {
-		userService.deleteUserById(userId);
+	@DeleteMapping("/{userName}")
+	public void deleteUserById(@PathVariable String userName) {
+		userService.deleteUserById(userName);
 		return;
 	}
+	
+	@PostMapping("/{userName}")
+	public void addRating(@PathVariable String userName, @RequestBody Rating rating) {
+		userService.addRating(userName, rating);
+		return;
+	}
+	
+	@PostMapping("/{userName}/ratings")
+	public Set<Rating> getAllRatings(@PathVariable String userName) {
+		return null;//userService.getAllRatingsForUser(userName);
+	}
+
 }

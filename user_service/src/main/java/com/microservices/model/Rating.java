@@ -1,7 +1,10 @@
 package com.microservices.model;
 
-public class Rating {
+import javax.persistence.Embeddable;
 
+@Embeddable
+public class Rating {
+	
 	int movieId;
 	int rating;
 	
