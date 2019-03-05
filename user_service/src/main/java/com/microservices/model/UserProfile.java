@@ -49,8 +49,6 @@ public class UserProfile {
 		this.password = password;
 	}
 	
-	
-	
 	public UserProfile(String userName, String password) {
 		super();
 		this.userName = userName;
@@ -64,4 +62,5 @@ public class UserProfile {
 		this.ratings = new ArrayList<Rating>();
 		this.dateOfRegistration = new Date();
 	}
+
 }

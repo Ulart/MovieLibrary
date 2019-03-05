@@ -1,6 +1,5 @@
 package com.microservices.service;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,12 +39,21 @@ public class UserService {
 	
 	public void addRating(String userName, Rating rating) {
 		UserProfile user = userRepository.findById(userName).orElse(null);
-		user.getRatings().add(rating);
+		int movieId = rating.getMovieId();
+		List<Rating> ratings = user.getRatings();
+		for(int i=0; i<ratings.size(); i++) {
+			if(ratings.get(i).getMovieId()==movieId) {
+				ratings.set(i, rating);
+				userRepository.save(user);
+				return;
+			}
+		}
+		ratings.add(rating);
 		userRepository.save(user);
 		return;
 	}
 
-	public Set<Rating> getAllRatingsForUser(String userName) {
-		return null;// userRepository.findByUserName(userName);
+	public List<Rating> getAllRatingsForUser(String userName) {
+		return null;
 	}
 }

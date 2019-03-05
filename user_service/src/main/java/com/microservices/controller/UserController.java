@@ -1,7 +1,6 @@
 package com.microservices.controller;
 
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -59,9 +58,14 @@ public class UserController {
 		return;
 	}
 	
-	@PostMapping("/{userName}/ratings")
-	public Set<Rating> getAllRatings(@PathVariable String userName) {
-		return null;//userService.getAllRatingsForUser(userName);
+	@GetMapping("/{userName}/ratings")
+	public List<Rating> getAllRatings(@PathVariable String userName) {
+		return userService.getAllRatingsForUser(userName);
+	}
+	
+	@RequestMapping("/{userName}/ratings")
+	public List<Rating> getRatingController(@PathVariable String userName) {
+		return null;
 	}
 
 }
