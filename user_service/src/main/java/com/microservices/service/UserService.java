@@ -37,7 +37,7 @@ public class UserService {
 		return;
 	}
 	
-	public void addRating(String userName, Rating rating) {
+	public void addOrUpdateRating(String userName, Rating rating) {
 		UserProfile user = userRepository.findById(userName).orElse(null);
 		int movieId = rating.getMovieId();
 		List<Rating> ratings = user.getRatings();
@@ -54,6 +54,20 @@ public class UserService {
 	}
 
 	public List<Rating> getAllRatingsForUser(String userName) {
-		return null;
+		return userRepository.findById(userName).orElse(null).getRatings();
+	}
+
+	public void deleteRatingByMovieId(String userName, int movieId) {
+		UserProfile user = userRepository.findById(userName).orElse(null);
+		List<Rating> ratings = user.getRatings();
+		for(int i=0; i<ratings.size(); i++) {
+			if(ratings.get(i).getMovieId()==movieId) {
+				ratings.remove(i);
+				userRepository.save(user);
+				return;
+			}
+		}
+		return;
+		
 	}
 }

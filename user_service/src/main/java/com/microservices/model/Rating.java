@@ -1,13 +1,24 @@
 package com.microservices.model;
 
-import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-@Embeddable
+@Entity
 public class Rating {
 	
+	@Id
+	@GeneratedValue
+	long id;
 	int movieId;
 	int rating;
-	
+
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
 	public int getMovieId() {
 		return movieId;
 	}
@@ -29,4 +40,5 @@ public class Rating {
 	public Rating() {
 		super();
 	}
+	
 }

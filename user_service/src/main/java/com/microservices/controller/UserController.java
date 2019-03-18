@@ -53,19 +53,21 @@ public class UserController {
 	}
 	
 	@PostMapping("/{userName}")
+	@PutMapping("/{userName}")
 	public void addRating(@PathVariable String userName, @RequestBody Rating rating) {
-		userService.addRating(userName, rating);
+		userService.addOrUpdateRating(userName, rating);
 		return;
 	}
 	
 	@GetMapping("/{userName}/ratings")
-	public List<Rating> getAllRatings(@PathVariable String userName) {
+	public List<Rating> getAllRatingsForUser(@PathVariable String userName) {
 		return userService.getAllRatingsForUser(userName);
 	}
 	
-	@RequestMapping("/{userName}/ratings")
-	public List<Rating> getRatingController(@PathVariable String userName) {
-		return null;
+	@DeleteMapping("/{userName}/ratings/{movieId}")
+	public void deleteRatingByMovieId(@PathVariable String userName, @PathVariable int movieId) {
+		userService.deleteRatingByMovieId(userName, movieId);
+		return;
 	}
 
 }

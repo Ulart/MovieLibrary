@@ -17,7 +17,7 @@ import com.microservices.model.Movie;
 import com.microservices.services.MovieService;
 
 @RestController
-@RequestMapping(value="/films", produces= {MediaType.APPLICATION_JSON_VALUE}, consumes= {MediaType.APPLICATION_JSON_VALUE})
+@RequestMapping(value="/movies", produces= {MediaType.APPLICATION_JSON_VALUE}, consumes= {MediaType.APPLICATION_JSON_VALUE})
 public class MovieController {
 	
 	@Autowired
@@ -34,18 +34,18 @@ public class MovieController {
 	}
 	
 	@PostMapping
-	public Movie addFilm(@RequestBody Movie movie) {
+	public Movie addMovie(@RequestBody Movie movie) {
 		return movieService.addNewMovie(movie);
 	}
 	
 	@DeleteMapping("/{movieId}")
-	public void deleteFilm(@PathVariable int movieId) {
+	public void deleteMovie(@PathVariable int movieId) {
 		movieService.deleteMovieById(movieId);
 		return;
 	}
 	
 	@PutMapping
-	public Movie updateFilm(@RequestBody Movie movie) {
+	public Movie updateMovie(@RequestBody Movie movie) {
 		return movieService.updateMovie(movie);
 	}
 }

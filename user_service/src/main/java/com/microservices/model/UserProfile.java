@@ -5,10 +5,15 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 
 @Entity
 @Table(name="UserDetails")
@@ -16,11 +21,12 @@ public class UserProfile {
 
 	@Id
 	private String userName;
-	
 	private String password;
 	@Column(name="registration")
 	private Date dateOfRegistration;
-	@ElementCollection(targetClass=Rating.class)
+	
+	@OneToMany(fetch=FetchType.EAGER, orphanRemoval=true)
+	@Cascade(value= {CascadeType.ALL})
 	private List<Rating> ratings;
 	
 	
