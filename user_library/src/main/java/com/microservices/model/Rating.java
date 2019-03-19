@@ -1,19 +1,9 @@
 package com.microservices.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-@Entity
 public class Rating {
-	
-	@Id
-	@GeneratedValue
+
 	long id;
-	@Column(nullable=false)
 	int movieId;
-	@Column(nullable=false)
 	int rating;
 
 	public long getId() {

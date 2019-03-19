@@ -42,13 +42,11 @@ public class UserService {
 		int movieId = rating.getMovieId();
 		List<Rating> ratings = user.getRatings();
 		for(int i=0; i<ratings.size(); i++) {
-			if(ratings.get(i).getMovieId()==movieId) {
+			if(ratings.get(i).getMovieId()==movieId)
 				ratings.set(i, rating);
-				userRepository.save(user);
-				return;
-			}
+			else
+				ratings.add(rating);
 		}
-		ratings.add(rating);
 		userRepository.save(user);
 		return;
 	}

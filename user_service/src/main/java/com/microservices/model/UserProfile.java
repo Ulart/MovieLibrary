@@ -20,7 +20,9 @@ import org.hibernate.annotations.CascadeType;
 public class UserProfile {
 
 	@Id
+	@Column(nullable=false)
 	private String userName;
+	@Column(nullable=false)
 	private String password;
 	@Column(name="registration")
 	private Date dateOfRegistration;

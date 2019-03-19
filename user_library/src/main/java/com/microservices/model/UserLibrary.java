@@ -7,7 +7,22 @@ public class UserLibrary {
 	private String name;
 	private String description;
 	private int rating;
+	private int avgRating;
+	private long numberOfVotes;
 	
+	
+	public int getAvgRating() {
+		return avgRating;
+	}
+	public void setAvgRating(int avgRating) {
+		this.avgRating = avgRating;
+	}
+	public long getNumberOfVotes() {
+		return numberOfVotes;
+	}
+	public void setNumberOfVotes(long numberOfVotes) {
+		this.numberOfVotes = numberOfVotes;
+	}
 	public int getMovieId() {
 		return movieId;
 	}

@@ -1,37 +1,24 @@
 package com.microservices.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Transient;
-
-@Entity
 public class Movie {
 	
-	@Id @GeneratedValue
 	private int id;
-	@Column(nullable=false, name="title")
 	private String name;
 	private String description;
-	@Transient
 	private int avgRating;
-	@Transient
 	private long numberOfVotes;
 	
-	
-	
-	public long getNumberOfVotes() {
-		return numberOfVotes;
-	}
-	public void setNumberOfVotes(long numberOfVotes) {
-		this.numberOfVotes = numberOfVotes;
-	}
 	public int getAvgRating() {
 		return avgRating;
 	}
 	public void setAvgRating(int avgRating) {
 		this.avgRating = avgRating;
+	}
+	public long getNumberOfVotes() {
+		return numberOfVotes;
+	}
+	public void setNumberOfVotes(long numberOfVotes) {
+		this.numberOfVotes = numberOfVotes;
 	}
 	public int getId() {
 		return id;
