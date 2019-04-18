@@ -10,12 +10,12 @@ import javax.persistence.Transient;
 public class Movie {
 	
 	@Id @GeneratedValue
-	private int id;
+	private long id;
 	@Column(nullable=false, name="title")
 	private String name;
 	private String description;
 	@Transient
-	private int avgRating;
+	private double avgRating;
 	@Transient
 	private long numberOfVotes;
 	
@@ -27,16 +27,16 @@ public class Movie {
 	public void setNumberOfVotes(long numberOfVotes) {
 		this.numberOfVotes = numberOfVotes;
 	}
-	public int getAvgRating() {
+	public double getAvgRating() {
 		return avgRating;
 	}
-	public void setAvgRating(int avgRating) {
+	public void setAvgRating(double avgRating) {
 		this.avgRating = avgRating;
 	}
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getName() {

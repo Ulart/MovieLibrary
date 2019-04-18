@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.microservices.model.MovieRating;
 import com.microservices.model.Rating;
 import com.microservices.model.UserProfile;
 import com.microservices.service.UserService;
 
 @RestController
-@RequestMapping(value="users", consumes= {MediaType.APPLICATION_JSON_VALUE}, produces= {MediaType.APPLICATION_JSON_VALUE})
+@RequestMapping(value="users", consumes= {MediaType.APPLICATION_JSON_VALUE}, produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 public class UserController {
 
 	@Autowired
@@ -60,8 +61,13 @@ public class UserController {
 	}
 	
 	@GetMapping("/{userName}/ratings")
-	public List<Rating> getAllRatingsForUser(@PathVariable String userName) {
+	public MovieRating getAllRatingsForUser(@PathVariable String userName) {
 		return userService.getAllRatingsForUser(userName);
+	}
+	
+	@GetMapping("/{userName}/ratings/{movieId}")
+	public Rating getAllRatingsForUser(@PathVariable String userName, @PathVariable long movieId) {
+		return userService.getRatingForUserAndMovie(userName, movieId);
 	}
 	
 	@DeleteMapping("/{userName}/ratings/{movieId}")

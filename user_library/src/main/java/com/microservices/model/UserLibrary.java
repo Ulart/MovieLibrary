@@ -3,18 +3,17 @@ package com.microservices.model;
 
 public class UserLibrary {
 	
-	private int movieId;
+	private long movieId;
 	private String name;
 	private String description;
 	private int rating;
-	private int avgRating;
+	private double avgRating;
 	private long numberOfVotes;
 	
-	
-	public int getAvgRating() {
+	public double getAvgRating() {
 		return avgRating;
 	}
-	public void setAvgRating(int avgRating) {
+	public void setAvgRating(double avgRating) {
 		this.avgRating = avgRating;
 	}
 	public long getNumberOfVotes() {
@@ -23,10 +22,10 @@ public class UserLibrary {
 	public void setNumberOfVotes(long numberOfVotes) {
 		this.numberOfVotes = numberOfVotes;
 	}
-	public int getMovieId() {
+	public long getMovieId() {
 		return movieId;
 	}
-	public void setMovieId(int movieId) {
+	public void setMovieId(long movieId) {
 		this.movieId = movieId;
 	}
 	public String getName() {
@@ -49,12 +48,22 @@ public class UserLibrary {
 	}
 	
 	
-	public UserLibrary(int movieId, String name, String description, int rating) {
+	public UserLibrary(Movie movie, int rating) {
+		this.movieId=movie.getId();
+		this.name=movie.getName();
+		this.description=movie.getDescription();
+		this.avgRating=movie.getAvgRating();
+		this.numberOfVotes=movie.getNumberOfVotes();
+		this.rating=rating;
+	}
+	public UserLibrary(long movieId, String name, String description, int rating, double avgRating, long numberOfVotes) {
 		super();
 		this.movieId = movieId;
 		this.name = name;
 		this.description = description;
 		this.rating = rating;
+		this.avgRating = avgRating;
+		this.numberOfVotes = numberOfVotes;
 	}
 	public UserLibrary() {
 		super();

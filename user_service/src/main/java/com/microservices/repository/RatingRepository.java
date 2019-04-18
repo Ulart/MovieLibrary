@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.microservices.model.Rating;
 
 @Repository
-public interface RatingRepository extends CrudRepository<Rating, String>{
+public interface RatingRepository extends CrudRepository<Rating, Long>{
 	
-	public List<Rating> findAllByMovieId(int movieId);
+	public List<Rating> findAllByMovieId(long movieId);
 }

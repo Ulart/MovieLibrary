@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.microservices.model.MovieRating;
 import com.microservices.model.Rating;
 import com.microservices.model.UserProfile;
 import com.microservices.repository.UserRepository;
@@ -38,21 +39,26 @@ public class UserService {
 	}
 	
 	public void addOrUpdateRating(String userName, Rating rating) {
+		int numberOfRating = -1;
 		UserProfile user = userRepository.findById(userName).orElse(null);
-		int movieId = rating.getMovieId();
+		long movieId = rating.getMovieId();
 		List<Rating> ratings = user.getRatings();
 		for(int i=0; i<ratings.size(); i++) {
-			if(ratings.get(i).getMovieId()==movieId)
-				ratings.set(i, rating);
-			else
-				ratings.add(rating);
+			if(ratings.get(i).getMovieId()==movieId) {
+				numberOfRating = i;
+				break;
+			}
 		}
+		if(numberOfRating==-1)
+			ratings.add(rating);
+		else
+			ratings.set(numberOfRating, rating);
 		userRepository.save(user);
 		return;
 	}
 
-	public List<Rating> getAllRatingsForUser(String userName) {
-		return userRepository.findById(userName).orElse(null).getRatings();
+	public MovieRating getAllRatingsForUser(String userName) {
+		return new MovieRating(userRepository.findById(userName).orElse(null).getRatings());
 	}
 
 	public void deleteRatingByMovieId(String userName, int movieId) {
@@ -66,6 +72,16 @@ public class UserService {
 			}
 		}
 		return;
-		
+	}
+
+	public Rating getRatingForUserAndMovie(String userName, long movieId) {
+		UserProfile user = userRepository.findById(userName).orElse(null);
+		List<Rating> ratings = user.getRatings();
+		for(int i=0; i<ratings.size(); i++) {
+			if(ratings.get(i).getMovieId()==movieId) {
+				return ratings.get(i);
+			}
+		}
+		return new Rating(movieId, 0);
 	}
 }

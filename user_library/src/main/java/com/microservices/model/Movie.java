@@ -5,20 +5,20 @@ public class Movie {
 	private int id;
 	private String name;
 	private String description;
-	private int avgRating;
+	private double avgRating;
 	private long numberOfVotes;
 	
-	public int getAvgRating() {
-		return avgRating;
-	}
-	public void setAvgRating(int avgRating) {
-		this.avgRating = avgRating;
-	}
 	public long getNumberOfVotes() {
 		return numberOfVotes;
 	}
 	public void setNumberOfVotes(long numberOfVotes) {
 		this.numberOfVotes = numberOfVotes;
+	}
+	public double getAvgRating() {
+		return avgRating;
+	}
+	public void setAvgRating(double avgRating) {
+		this.avgRating = avgRating;
 	}
 	public int getId() {
 		return id;

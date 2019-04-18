@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.microservices.model.Movie;
 
 @Repository
-public interface MovieRepository extends CrudRepository<Movie, Integer> {
-
+public interface MovieRepository extends CrudRepository<Movie, Long> {
+	
 }

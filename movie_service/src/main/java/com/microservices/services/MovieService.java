@@ -18,20 +18,20 @@ public class MovieService {
 		return (List<Movie>) movieRepository.findAll();
 	}
 
-	public Movie getMovieById(int id) {
+	public Movie getMovieById(long id) {
 		return movieRepository.findById(id).orElse(null);
 	}
 
-	public Movie addNewMovie(Movie newFilm) {
-		return movieRepository.save(newFilm);
+	public Movie addNewMovie(Movie newMovie) {
+		return movieRepository.save(newMovie);
 	}
 
-	public Movie updateMovie(Movie film) {
-		return movieRepository.save(film);
+	public Movie updateMovie(Movie movie) {
+		return movieRepository.save(movie);
 	}
 
-	public void deleteMovieById(int filmId) {
-		movieRepository.deleteById(filmId);
+	public void deleteMovieById(long movieId) {
+		movieRepository.deleteById(movieId);
 		return;
 	}
 

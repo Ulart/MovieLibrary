@@ -12,7 +12,7 @@ public class Rating {
 	@GeneratedValue
 	long id;
 	@Column(nullable=false)
-	int movieId;
+	long movieId;
 	@Column(nullable=false)
 	int rating;
 
@@ -22,10 +22,10 @@ public class Rating {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public int getMovieId() {
+	public long getMovieId() {
 		return movieId;
 	}
-	public void setMovieId(int movieId) {
+	public void setMovieId(long movieId) {
 		this.movieId = movieId;
 	}
 	public int getRating() {
@@ -35,7 +35,7 @@ public class Rating {
 		this.rating = rating;
 	}
 	
-	public Rating(int movieId, int rating) {
+	public Rating(long movieId, int rating) {
 		super();
 		this.movieId = movieId;
 		this.rating = rating;
