@@ -6,7 +6,7 @@ public class UserLibrary {
 	private long movieId;
 	private String name;
 	private String description;
-	private int rating;
+	private int userRating;
 	private double avgRating;
 	private long numberOfVotes;
 	
@@ -41,10 +41,10 @@ public class UserLibrary {
 		this.description = description;
 	}
 	public int getRating() {
-		return rating;
+		return userRating;
 	}
 	public void setRating(int rating) {
-		this.rating = rating;
+		this.userRating = rating;
 	}
 	
 	
@@ -54,14 +54,14 @@ public class UserLibrary {
 		this.description=movie.getDescription();
 		this.avgRating=movie.getAvgRating();
 		this.numberOfVotes=movie.getNumberOfVotes();
-		this.rating=rating;
+		this.userRating=rating;
 	}
 	public UserLibrary(long movieId, String name, String description, int rating, double avgRating, long numberOfVotes) {
 		super();
 		this.movieId = movieId;
 		this.name = name;
 		this.description = description;
-		this.rating = rating;
+		this.userRating = rating;
 		this.avgRating = avgRating;
 		this.numberOfVotes = numberOfVotes;
 	}
